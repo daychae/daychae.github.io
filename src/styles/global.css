@@ -8,6 +8,10 @@
 	font-weight: 400;
 }
 
+html {
+	background: #ffffff;
+}
+
 * {
 	box-sizing: border-box;
 }
