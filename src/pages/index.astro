@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const futureSections = [
+	{
+		label: 'About',
+		title: '소개',
+		description: '나를 소개하고, 관심사와 배경을 정리할 공간입니다.',
+	},
+	{
+		label: 'Projects',
+		title: '프로젝트',
+		description: '만든 것, 실험한 것, 배운 점을 모아둘 공간입니다.',
+	},
+	{
+		label: 'Posts',
+		title: '글',
+		description: '생각과 기록을 천천히 쌓아갈 공간입니다.',
+	},
+];
+
+const profileName = '이름 또는 닉네임';
+---
+
+<BaseLayout
+	title="개인 홈페이지"
+	description="Astro로 만든 개인 홈페이지 첫 버전입니다."
+>
+	<main class="page-shell">
+		<header class="site-header" aria-label="Site header">
+			<a class="brand" href="/">{profileName}</a>
+			<nav class="nav" aria-label="Primary navigation">
+				<a href="/">Home</a>
+				<a href="#about">About</a>
+				<a href="#projects">Projects</a>
+				<a href="#posts">Posts</a>
+			</nav>
+		</header>
+
+		<section class="hero" aria-labelledby="home-title">
+			<div>
+				<p class="eyebrow">Personal homepage</p>
+				<p class="profile-name">{profileName}</p>
+				<h1 id="home-title">나를 소개하는 작은 웹사이트</h1>
+				<p class="intro">
+					한 줄 소개를 여기에 적어보세요. 예를 들면 “배우고, 만들고,
+					기록하는 사람입니다.”처럼 짧고 분명하게 시작하면 좋습니다.
+				</p>
+			</div>
+			<aside class="hero-panel" aria-label="Deployment target">
+				<p>
+					이 Home 페이지를 시작점으로 삼고, 나중에 About, Projects, Posts를
+					각각의 페이지로 확장합니다. 최종 배포 목표는 GitHub Pages의
+					github.io 주소입니다.
+				</p>
+			</aside>
+		</section>
+
+		<section class="section-grid" aria-label="Future sections">
+			{
+				futureSections.map((section) => (
+					<a
+						id={section.label.toLowerCase()}
+						class="section-link"
+						href={`#${section.label.toLowerCase()}`}
+					>
+						<span>{section.label}</span>
+						<h2>{section.title}</h2>
+						<p>{section.description}</p>
+					</a>
+				))
+			}
+		</section>
+	</main>
+</BaseLayout>
